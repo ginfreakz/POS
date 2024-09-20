@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
@@ -7,8 +8,9 @@
     <!-- Tailwind CSS -->
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome for icons -->
-    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+    <script src="https://kit.fontawesome.com/0517db9e7c.js" crossorigin="anonymous"></script>
 </head>
+
 <body class="bg-gray-100">
     <!-- Header with Logo -->
     <div class="bg-white shadow-md">
@@ -21,13 +23,19 @@
             <div class="w-1/2 flex justify-end items-center space-x-4">
                 <!-- Icons or actions can go here -->
                 <button class="p-2 text-gray-600">
-                    <i class="fas fa-search"></i> <!-- Icon 1 -->
+                    <i class="fa-solid fa-truck-fast"></i>
                 </button>
                 <button class="p-2 text-gray-600">
-                    <i class="fas fa-bell"></i> <!-- Icon 2 -->
+                    <i class="fa-solid fa-folder-open"></i>
                 </button>
                 <button class="p-2 text-gray-600">
-                    <i class="fas fa-user"></i> <!-- Icon 3 -->
+                    <i class="fa-solid fa-cloud-arrow-down"></i>
+                </button>
+                <button class="p-2 text-gray-600">
+                    <i class="fa-solid fa-arrows-rotate"></i>
+                </button>
+                <button class="p-2 text-gray-600">
+                    <i class="fa-solid fa-wifi"></i>
                 </button>
             </div>
         </div>
@@ -111,70 +119,37 @@
             <!-- Till Code Input Section -->
             <div class="bg-white rounded-lg shadow-lg p-4">
                 <label for="till_code" class="block text-sm font-medium text-gray-700">Input Till Code</label>
-                <input type="text" id="till_code" class="mt-1 p-2 w-full border rounded-md focus:ring-yellow-500 focus:border-yellow-500">
+                <input type="text" id="till_code"
+                    class="mt-1 p-2 w-full border rounded-md focus:ring-yellow-500 focus:border-yellow-500">
             </div>
         </div>
     </div>
-    <div class="max-w-screen-xl mx-auto py-8">
-         <!-- Button to trigger modals -->
-         <button data-modal="modal1" class="open-modal bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded">
+    {{-- <div class="max-w-screen-xl mx-auto py-8">
+        <!-- Button to trigger modals -->
+        <button data-modal="modal1"
+            class="open-modal bg-yellow-500 hover:bg-yellow-600 text-white font-bold py-2 px-4 rounded">
             Open Modal 1
         </button>
-        <button data-modal="modal2" class="open-modal bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
+        <button data-modal="modal2"
+            class="open-modal bg-blue-500 hover:bg-blue-600 text-white font-bold py-2 px-4 rounded">
             Open Modal 2
-        </button>
+        </button> --}}
 
-        <!-- Modal -->
-        <div id="modal" class="fixed inset-0 hidden bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
+        <!-- Modal Template -->
+        <div id="modal-template"
+            class="modal hidden fixed inset-0 bg-gray-900 bg-opacity-50 flex items-center justify-center z-50">
             <div class="bg-white w-full max-w-lg mx-auto rounded-lg shadow-lg relative p-8">
-                <!-- Close button -->
-                <button id="closeModal" class="absolute top-2 right-2 text-gray-400 hover:text-gray-600">
-                    &times;
-                </button>
-
-                <!-- Modal content -->
-                <div class="flex">
-                    <div class="w-1/2 pr-4">
-                        <h2 class="text-lg font-bold text-orange-600">See you next time, KASIR YRI!</h2>
-                        <form class="mt-4">
-                            <div class="mb-4">
-                                <label for="userId" class="block text-gray-700">User ID</label>
-                                <input type="text" id="userId" value="171171" class="mt-1 block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
-                            </div>
-                            <div class="mb-4">
-                                <label for="password" class="block text-gray-700">Password</label>
-                                <input type="password" id="password" placeholder="Enter your password" class="mt-1 block w-full px-3 py-2 border border-red-500 rounded-md shadow-sm focus:outline-none focus:ring-yellow-500 focus:border-yellow-500 sm:text-sm">
-                                <p class="text-red-500 text-sm mt-1">Please enter a password to unlock the screen and press Enter</p>
-                            </div>
-                        </form>
-                    </div>
-                    <div class="w-1/2 border-l pl-4 flex items-center justify-center">
-                        <!-- Image or illustration -->
-                        <img src="https://via.placeholder.com/150" alt="Illustration" class="max-w-full h-auto">
-                    </div>
+                <button class="close-modal absolute top-2 right-2 text-gray-400 hover:text-gray-600">&times;</button>
+                <div class="modal-content">
+                    <!-- Dynamic content will be injected here -->
                 </div>
             </div>
         </div>
     </div>
-    <script>
-        document.addEventListener('DOMContentLoaded', () => {
-            const openModalBtn = document.getElementById('openModal');
-            const modal = document.getElementById('modal');
-            const closeModalBtn = document.getElementById('closeModal');
-
-            if (openModalBtn && modal && closeModalBtn) {
-                openModalBtn.addEventListener('click', () => {
-                    modal.classList.remove('hidden');
-                });
-
-                closeModalBtn.addEventListener('click', () => {
-                    modal.classList.add('hidden');
-                });
-            }
-        });
-    </script>
+    <script src="{{ asset('js/modals.js') }}"></script>
     <style>
-        
+
     </style>
 </body>
+
 </html>
