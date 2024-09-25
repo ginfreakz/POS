@@ -9,6 +9,7 @@
     <script src="https://cdn.tailwindcss.com"></script>
     <!-- FontAwesome for icons -->
     <script src="https://kit.fontawesome.com/0517db9e7c.js" crossorigin="anonymous"></script>
+    
 </head>
 
 <body class="bg-gray-100">
@@ -23,7 +24,7 @@
             <div class="w-1/2 flex justify-end items-center space-x-4">
                 <!-- Icons or actions can go here -->
                 <button class="p-2 text-gray-600">
-                    <i class="fa-solid fa-truck-fast"></i>
+                    <i class="fa-solid fa-spinner"></i>
                 </button>
                 <button class="p-2 text-gray-600">
                     <i class="fa-solid fa-folder-open"></i>
@@ -147,9 +148,35 @@
         </div>
     </div>
     <script src="{{ asset('js/modals.js') }}"></script>
-    <style>
+    <!-- Custom CSS -->
+    <link href="{{ asset('css/main.css') }}" rel="stylesheet">
+    <script> 
+        let selectedRowIndex = 0;
+        const rows = document.querySelectorAll('tbody tr');
 
-    </style>
+        function highlightRow(index) {
+            rows.forEach((row, i) => {
+                if (i === index) {
+                    row.classList.add('highlight');
+                } else {
+                    row.classList.remove('highlight');
+                }
+            });
+        }
+
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'ArrowDown') {
+                selectedRowIndex = (selectedRowIndex + 1) % rows.length;
+                highlightRow(selectedRowIndex);
+            } else if (e.key === 'ArrowUp') {
+                selectedRowIndex = (selectedRowIndex - 1 + rows.length) % rows.length;
+                highlightRow(selectedRowIndex);
+            }
+        });
+
+        // Initial highlight
+        highlightRow(selectedRowIndex);
+    </script>
 </body>
 
 </html>

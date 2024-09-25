@@ -35,6 +35,23 @@ document.addEventListener('DOMContentLoaded', () => {
                 </div>
             </div>
         `,
+        modal3: `
+            <div class="text-center">
+                <div class="bg-gray-800 text-white py-2 rounded-t-lg">
+                    <h2 class="text-lg font-bold">Information</h2>
+                </div>
+                <div class="bg-white py-8 px-4 rounded-b-lg">
+                    <div class="text-center mb-4">
+                        <img src="https://via.placeholder.com/100x100?text=!" alt="Warning Icon" class="mx-auto">
+                    </div>
+                    <h2 class="text-xl font-semibold">Do you wish to flag this transaction?</h2>
+                    <div class="mt-6 flex justify-center space-x-4">
+                        <button id="disagreeButton" class="bg-red-500 text-white px-6 py-2 rounded-md">Disagree</button>
+                        <button id="agreeButton" class="bg-gray-800 text-white px-6 py-2 rounded-md">Agree</button>
+                    </div>
+                </div>
+            </div>
+        `,
     };
 
     // Example items data (you can replace this with an API call or actual data)
@@ -107,6 +124,22 @@ document.addEventListener('DOMContentLoaded', () => {
             modalTemplate.classList.remove('hidden');
             const inputField = document.getElementById('itemCodeInput');
             inputField.addEventListener('keydown', handleItemCodeEntry);
+        } else if (e.key === '3') {
+            modalContent.innerHTML = modalMapping['modal3'];
+            modalTemplate.classList.remove('hidden');
+            document.getElementById('disagreeButton').addEventListener('click', () => {
+                modalTemplate.classList.add('hidden');
+            });
+            document.getElementById('agreeButton').addEventListener('click', () => {
+                cancelTransaction();
+            });
         }
     });
+
+    function cancelTransaction() {
+        // Logic for cancelling the transaction
+        console.log('Transaction cancelled');
+        modalTemplate.classList.add('hidden'); // Close the modal
+        // Redirect, show a message, or perform other actions
+    }
 });
